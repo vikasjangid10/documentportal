@@ -8,7 +8,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 from logger.custom_logger import CustomLogger
 from exception.custom_exception import DocumentPortalException
-
+os.environ["OPENAI_API_KEY"]=os.getenv("OPENAI_API_KEY")
 log = CustomLogger().get_logger(__name__)
 
 class ModelLoader:
@@ -32,12 +32,13 @@ class ModelLoader:
 
     def load_embeddings(self):
         try:
-            log.info("Loading embeddings models...")
             model_name = self.config["embedding_model"]["model_name"]
-            return OpenAIEmbeddings(model=model_name)
+            log.info("Loading embedding model", model=model_name)
+            return GoogleGenerativeAIEmbeddings(model=model_name,
+                                                google_api_key=self.api_keys.get("GOOGLE_API_KEY")) #type: ignore
         except Exception as e:
-            log.error("Error loading embeddings model", error=str(e))
-            raise DocumentPortalException("Failed to load embedding model",sys)
+            log.error("Error loading embedding model", error=str(e))
+            raise DocumentPortalException("Failed to load embedding model", sys)
 
     def load_llm(self):
         llm_block = self.config["llm"]
@@ -66,7 +67,7 @@ class ModelLoader:
         elif provider == "groq":
             return ChatGroq(
                 model=model_name,
-                api_key=self.api_key_mgr.get("GROQ_API_KEY"), #type: ignore
+                api_key=self.api_keys.get("GROQ_API_KEY"), #type: ignore
                 temperature=temperature,
             )
 
