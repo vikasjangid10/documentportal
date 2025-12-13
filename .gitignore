@@ -6,3 +6,4 @@ __pycache__/
 logs/
 *.pyc
 test.py
+document_portal.egg-info/SOURCES.txt

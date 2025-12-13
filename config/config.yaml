@@ -12,12 +12,18 @@ retrieval:
 llm:
   groq:
     provider: "groq"
-    model_name: "qwen/qwen3-32b"
+    model_name: "llama-3.3-70b-versatile"
     temperature: 0
     max_output_tokens: 2048
 
   google:
     provider: "google"
     model_name: "gemini-2.0-flash"
+    temperature: 0
+    max_output_tokens: 2048
+
+  openai:
+    provider: "openai"
+    model_name: "gpt-4"
     temperature: 0
     max_output_tokens: 2048

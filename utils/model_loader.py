@@ -6,6 +6,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from logger.custom_logger import CustomLogger
 from exception.custom_exception import DocumentPortalException
 os.environ["OPENAI_API_KEY"]=os.getenv("OPENAI_API_KEY")
@@ -59,7 +60,7 @@ class ModelLoader:
         if provider == "google":
             return ChatGoogleGenerativeAI(
                 model=model_name,
-                google_api_key=self.api_key_mgr.get("GOOGLE_API_KEY"),
+                google_api_key=self.api_keys.get("GOOGLE_API_KEY"),
                 temperature=temperature,
                 max_output_tokens=max_tokens
             )
@@ -71,13 +72,13 @@ class ModelLoader:
                 temperature=temperature,
             )
 
-        # elif provider == "openai":
-        #     return ChatOpenAI(
-        #         model=model_name,
-        #         api_key=self.api_key_mgr.get("OPENAI_API_KEY"),
-        #         temperature=temperature,
-        #         max_tokens=max_tokens
-        #     )
+        elif provider == "openai":
+            return ChatOpenAI(
+                model=model_name,
+                api_key=self.api_keys.get("OPENAI_API_KEY"),
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
 
         else:
             log.error("Unsupported LLM provider", provider=provider)
