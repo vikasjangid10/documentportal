@@ -1,2 +1,4 @@
-from langchain_core.output_parsers import JsonOutputParser
-print("LangChain 1.x parser import working ✅")
+from langchain_openai import OpenAIEmbeddings
+
+emb = OpenAIEmbeddings(model="text-embedding-3-small")
+print(emb.embed_query("Hello world"))
