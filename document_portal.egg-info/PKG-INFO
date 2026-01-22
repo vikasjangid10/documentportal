@@ -1,5 +1,109 @@
 Metadata-Version: 2.4
 Name: document_portal
 Version: 0.1
-Author: Vikas Jangid
+Summary: An intelligent document analysis and comparison system powered by LLMs
+Author: Sunny Savita
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: langchain==0.3.27
+Requires-Dist: langchain-community==0.3.27
+Requires-Dist: langchain-core==0.3.72
+Requires-Dist: langchain-groq==0.3.6
+Requires-Dist: langchain-google-genai==2.1.8
+Requires-Dist: faiss-cpu==1.11.0.post1
+Requires-Dist: fastapi==0.116.1
+Requires-Dist: uvicorn==0.35.0
+Requires-Dist: python-dotenv==1.1.1
+Requires-Dist: python-multipart==0.0.20
+Requires-Dist: PyMuPDF==1.26.3
+Requires-Dist: structlog==25.4.0
+Requires-Dist: docx2txt==0.9
+Requires-Dist: ipykernel==6.30.0
+Requires-Dist: streamlit==1.47.1
+Requires-Dist: pytest==8.4.1
+Requires-Dist: pypdf==5.8.0
+Requires-Dist: cfn-lint
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pylint; extra == "dev"
+Requires-Dist: ipykernel; extra == "dev"
 Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Project Setup Guide
+
+## Create Project Folder and Environment Setup
+
+```bash
+# Create a new project folder
+mkdir <project_folder_name>
+
+# Move into the project folder
+cd <project_folder_name>
+
+# Open the folder in VS Code
+code .
+
+# Create a new Conda environment with Python 3.10
+conda create -p <env_name> python=3.10 -y
+
+# Activate the environment (use full path to the environment)
+conda activate <path_of_the_env>
+
+# Install dependencies from requirements.txt
+pip install -r requirements.txt
+
+# Initialize Git
+git init
+
+# Stage all files
+git add .
+
+# Commit changes
+git commit -m "<write your commit message>"
+
+# Push to remote (after adding remote origin)
+git push
+
+# Cloning the repository
+git clone https://github.com/sunnysavita10/document_portal.git
+```
+## Minimum Requirements for the Project
+
+### LLM Models
+- **Groq** (Free)
+- **OpenAI** (Paid)
+- **Gemini** (15 Days Free Access)
+- **Claude** (Paid)
+- **Hugging Face** (Free)
+- **Ollama** (Local Setup)
+
+### Embedding Models
+- **OpenAI**
+- **Hugging Face**
+- **Gemini**
+
+### Vector Databases
+- **In-Memory**
+- **On-Disk**
+- **Cloud-Based**
+
+## API Keys
+
+### GROQ API Key
+- [Get your API Key](https://console.groq.com/keys)  
+- [Groq Documentation](https://console.groq.com/docs/overview)
+
+### Gemini API Key
+- [Get your API Key](https://aistudio.google.com/apikey)  
+- [Gemini Documentation](https://ai.google.dev/gemini-api/docs/models)
+
+
