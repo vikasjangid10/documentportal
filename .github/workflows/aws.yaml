@@ -10,7 +10,7 @@ env:
   ECS_SERVICE: document-portal-service
   ECS_CLUSTER: document-portal-cluster1
   ECS_TASK_DEFINITION: .github/workflows/task_definition.json
-  CONTAINER_NAME: document-portal-container
+  CONTAINER_NAME: documentportal
 
 permissions:
   id-token: write
